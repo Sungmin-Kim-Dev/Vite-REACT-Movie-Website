@@ -2,8 +2,8 @@
 
 ## Used in this project
 
-Vite, REACT, TailwindCSS, shadcn/ui
-REACT Router, TanStack Query, Axios
+Vite, REACT, TailwindCSS, shadcn/ui <br>
+REACT Router, TanStack Query, Axios <br>
 TMDB API (https://www.themoviedb.org/)
 
 ### My Goal for this project
