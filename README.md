@@ -2,8 +2,11 @@
 
 ![Project Screenshot](path_to_your_screenshot.png)
 
+**[View Live Demo](https://soft-sunshine-9328b6.netlify.app/){:target="_blank" rel="noopener"}**
+
+abc
 **<a href="https://soft-sunshine-9328b6.netlify.app" target="_blank">[View Live Demo]</a>**
-**[View Live Demo](https://soft-sunshine-9328b6.netlify.app/){:target="_blank"}**
+
 
 A comprehensive React-based movie and TV series information website, leveraging the TMDB API. This project showcases my proficiency in modern front-end technologies, responsive web design, and internationalization.
 
