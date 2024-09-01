@@ -10,7 +10,7 @@ const AppLayout = () => {
 
   return (
     <div className="h-dvh bg-black text-white">
-      <header className="mx-8 flex items-center bg-slate-900">
+      <header className="px-8 flex items-center bg-slate-900 sticky top-0 left-0">
         <h1 className="px-5">
           <Link to="/">LOGO</Link>
         </h1>
