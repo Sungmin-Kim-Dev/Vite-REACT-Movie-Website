@@ -1,4 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const AppLayout = () => {
   const menuItems = {
@@ -8,9 +10,11 @@ const AppLayout = () => {
 
   return (
     <div className="h-dvh bg-black text-white">
-      <header className="flex items-center bg-slate-900">
-        <h1 className="px-5">LOGO</h1>
-        <nav>
+      <header className="mx-8 flex items-center bg-slate-900">
+        <h1 className="px-5">
+          <Link to="/">LOGO</Link>
+        </h1>
+        <nav className="mr-auto">
           <ul className="flex">
             {menuItems.itemName.map((item, i) => (
               <li key={item}>
@@ -21,6 +25,12 @@ const AppLayout = () => {
             ))}
           </ul>
         </nav>
+        <div className="flex max-w-sm items-center space-x-2">
+          <Input type="text" placeholder="Search" />
+          <Button type="submit" className="bg-sky-500 hover:bg-sky-700">
+            Search
+          </Button>
+        </div>
       </header>
       <main>
         <Outlet />

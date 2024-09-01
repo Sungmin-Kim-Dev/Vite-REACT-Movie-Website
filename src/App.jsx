@@ -7,6 +7,7 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import SearchPage from "./pages/Search/SearchPage";
 import WatchListPage from "./pages/WatchList/WatchListPage";
 import SeriesPage from "./pages/Series/SeriesPage";
+import SeriesDetailPage from "./pages/SeriesDetail/SeriesDetailPage";
 
 // Homepage  /
 // movie all page  /movies?q=
@@ -23,7 +24,10 @@ function App() {
           <Route index element={<MoviesPage />} />
           <Route path=":id" element={<MovieDetailPage />} />
         </Route>
-        <Route path="/series" element={<SeriesPage />} />
+        <Route path="/series">
+          <Route index element={<SeriesPage />} />
+          <Route path=":id" element={<SeriesDetailPage />} />
+        </Route>
       </Route>
 
       <Route path="*" element={<NotFoundPage />}></Route>
