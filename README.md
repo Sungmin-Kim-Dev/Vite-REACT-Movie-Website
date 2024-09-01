@@ -4,11 +4,11 @@
 
 **[View Live Demo](https://soft-sunshine-9328b6.netlify.app/)**
 
-A comprehensive React-based movie and TV series information website, leveraging the TMDB API. This project showcases my proficiency in modern front-end technologies and responsive web design.
+A comprehensive React-based movie and TV series information website, leveraging the TMDB API. This project showcases my proficiency in modern front-end technologies, responsive web design, and internationalization.
 
 ## Project Overview
 
-This website offers users a rich experience for exploring movies and TV series. It features a responsive design suitable for both mobile and desktop viewing, with intuitive navigation through five main sections: Home, Search, Watch List, Movies, and Series.
+This website offers users a rich experience for exploring movies and TV series. It features a responsive design suitable for both mobile and desktop viewing, with intuitive navigation through five main sections: Home, Search, Watch List, Movies, and Series. The site supports multiple languages and regions, enhancing its global accessibility.
 
 ## Features
 
@@ -19,6 +19,14 @@ This website offers users a rich experience for exploring movies and TV series. 
 - **Series**: Separate section for TV series, allowing users to discover new shows
 - Detailed information pages for individual movies and TV series
 - Responsive design ensuring a seamless experience across devices
+- **Language Options**: 
+  - English (default)
+  - Korean
+- **Region Options** (for English):
+  - United States
+  - United Kingdom
+  - Australia
+- Content and ratings adapted based on selected language and region
 
 ## Technologies Used
 
@@ -30,6 +38,7 @@ This website offers users a rich experience for exploring movies and TV series. 
 - [TanStack Query](https://tanstack.com/query/latest) - Powerful asynchronous state management
 - [Axios](https://axios-http.com/) - Promise based HTTP client
 - [TMDB API](https://www.themoviedb.org/documentation/api) - The Movie Database API
+- [react-i18next](https://react.i18next.com/) - Internationalization framework for React / JavaScript
 
 ## Project Structure
 
@@ -41,15 +50,25 @@ The project is organized into five main sections, corresponding to the primary n
 4. Movies
 5. Series
 
+Additionally, the project includes:
+
+- Language selection component (English/Korean)
+- Region selection component (US/GB/Australia for English)
+- Internationalization setup for managing translations
+
 [You can add more details about the file structure, component organization, or any other architectural decisions you made]
 
 ## Key Learnings
 
-[Describe what you learned from this project, any challenges you overcame, or specific areas where you grew as a developer]
+[Describe what you learned from this project, any challenges you overcame, or specific areas where you grew as a developer. Consider including points about implementing internationalization and handling region-specific content.]
 
 ## Future Improvements
 
-[Optional: List any features or improvements you'd like to add in the future]
+- Add more language options
+- Implement user accounts for personalized experiences across devices
+- Enhance region-specific recommendations based on local trends and releases
+
+[Add any other features or improvements you'd like to implement in the future]
 
 ## Contact
 
