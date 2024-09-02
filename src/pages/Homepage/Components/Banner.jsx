@@ -1,40 +1,28 @@
-import { usePopularMoviesQuery } from "@/hooks/usePopularMovies";
-import { AlertCircle } from "lucide-react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { useMoviesQuery } from "@/hooks/useMoviesQuery";
+import LoadingCard from "@/layout/components/LoadingCard";
+import ErrorCard from "@/layout/components/ErrorCard";
 
 const Banner = () => {
-  const { data, isLoading, isError, error } = usePopularMoviesQuery();
+  const { data, isLoading, isError, error } = useMoviesQuery("popular");
   console.table("data:", data);
 
   if (isLoading) {
-    return <div className="size-14 bg-red-500">Loading</div>;
+    return <LoadingCard />;
   }
   if (isError) {
-    return (
-      <Alert variant="destructive" className="mx-auto mt-14 w-fit px-8">
-        <div className="flex gap-4">
-          <AlertCircle className="mt-1 size-6" />
-          <div>
-            <AlertTitle className="text-2xl">Error</AlertTitle>
-            <AlertDescription className="text-xl">
-              {error.message}
-            </AlertDescription>
-          </div>
-        </div>
-      </Alert>
-    );
+    return <ErrorCard error={error} />;
   }
-
+  const topMovie = data.results[1];
   return (
     <div
       style={{
-        backgroundImage: `url(https://image.tmdb.org/t/p/original${data?.results[0].backdrop_path})`,
+        backgroundImage: `url(https://image.tmdb.org/t/p/original${topMovie.backdrop_path})`,
       }}
-      className="h-[56dvh] bg-cover bg-center bg-no-repeat pb-16 pl-24 before:absolute before:left-0 before:h-[56dvh] before:w-full before:bg-gradient-to-t before:from-black before:to-transparent"
+      className="global-px h-[56dvh] bg-cover bg-center bg-no-repeat pb-16 before:absolute before:left-0 before:h-[56dvh] before:w-full before:bg-gradient-to-t before:from-black before:to-transparent"
     >
-      <div className="relative z-10 flex h-full w-2/5 flex-col justify-end space-y-6 text-gray-200">
-        <h1 className="text-3xl font-semibold">{data?.results[0].title}</h1>
-        <p className="text-lg">{data?.results[0].overview}</p>
+      <div className="relative z-10 flex h-full flex-col justify-end space-y-6 text-gray-200 sm:w-2/5">
+        <h1 className="text-3xl font-semibold">{topMovie.title}</h1>
+        <p className="hidden text-lg sm:block">{topMovie.overview}</p>
       </div>
     </div>
   );

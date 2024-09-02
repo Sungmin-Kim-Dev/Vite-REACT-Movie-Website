@@ -77,7 +77,7 @@
 
 @layer components {
   .hover-underline {
-    @apply absolute bottom-1 left-0 block h-[2px] w-full origin-left scale-x-0 bg-neutral-50 opacity-40 transition-all delay-300 group-hover/item:scale-x-100 group-hover/item:opacity-100;
+    @apply absolute bottom-1 left-0 block h-[2px] w-full origin-left scale-x-0 bg-neutral-50 opacity-40 transition-all duration-300 group-hover/item:scale-x-100 group-hover/item:opacity-100;
   }
   .after-gradient {
     background: linear-gradient(
@@ -101,5 +101,8 @@
     z-index: -1;
     will-change: height;
     pointer-events: none;
+  }
+  .global-px {
+    @apply px-10 md:px-14 lg:px-16 xl:px-[4.375rem];
   }
 }
