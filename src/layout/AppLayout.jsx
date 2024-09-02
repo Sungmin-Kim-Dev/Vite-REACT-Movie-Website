@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { HiHome } from "react-icons/hi";
 import { IoSearch } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa";
@@ -9,6 +9,7 @@ import MenuItem from "./components/MenuItem";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import background from "../assets/background.png";
 
 const AppLayout = () => {
   const menuItems = [
@@ -41,10 +42,18 @@ const AppLayout = () => {
   const [mobileMenuToggle, setMobileMenuToggle] = useState(false);
 
   return (
-    <div className="h-dvh bg-black text-slate-50">
-      <header className="flex h-[4.5rem] items-center">
-        <h1 className="mr-8 h-[2.375rem] w-[4.25rem] bg-slate-300 px-5 md:h-12 md:w-[5.375rem]">
-          LOGO
+    <div
+      className="relative z-10 h-dvh bg-black text-slate-50"
+      style={{ background: `url(${background}) 50%/cover no-repeat fixed` }}
+    >
+      <header className="after:after-gradient flex h-[4.5rem] items-center px-5 md:px-9">
+        <h1>
+          <Link
+            to="/"
+            className="mr-8 block h-[2.375rem] w-[4.25rem] bg-slate-300 px-5 md:h-12 md:w-[5.375rem]"
+          >
+            LOGO
+          </Link>
         </h1>
         <nav className="mr-auto">
           <ul className="hidden md:flex">
@@ -106,7 +115,7 @@ const AppLayout = () => {
           </Button>
         </div>
       </header>
-      <main>
+      <main className="">
         <Outlet />
       </main>
     </div>
