@@ -74,3 +74,9 @@
       "calt" 1;
   }
 }
+
+@layer components {
+  .hover-underline {
+    @apply delay-300 absolute bottom-1 left-0 block h-[2px] w-full origin-left scale-x-0 bg-neutral-50 opacity-40 transition-all group-hover/item:scale-x-100 group-hover/item:opacity-100;
+  }
+}

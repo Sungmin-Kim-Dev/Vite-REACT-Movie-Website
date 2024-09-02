@@ -32,9 +32,9 @@ const Banner = () => {
       }}
       className="h-[56dvh] bg-cover bg-center bg-no-repeat pb-16 pl-24 before:absolute before:left-0 before:h-[56dvh] before:w-full before:bg-gradient-to-t before:from-black before:to-transparent"
     >
-      <div className='w-2/5 h-full text-gray-200 justify-end flex flex-col relative z-10 space-y-6'>
-        <h1 className='text-3xl font-semibold'>{data?.results[0].title}</h1>
-        <p className='text-lg'>{data?.results[0].overview}</p>
+      <div className="relative z-10 flex h-full w-2/5 flex-col justify-end space-y-6 text-gray-200">
+        <h1 className="text-3xl font-semibold">{data?.results[0].title}</h1>
+        <p className="text-lg">{data?.results[0].overview}</p>
       </div>
     </div>
   );
