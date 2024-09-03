@@ -31,11 +31,11 @@ const MovieSlide = ({ category, slideName }) => {
         className="my-8"
       >
         <h3 className="text-2xl font-bold">{slideName}</h3>
-        <CarouselContent className="my-5 -ml-5">
+        <CarouselContent className="-ml-5 2xl:-ml-8">
           {data.results.map((movie, index) => (
             <CarouselItem
               key={index}
-              className="basis-1/2 pl-5 md:basis-1/3 lg:basis-1/4 2xl:basis-1/5"
+              className="basis-1/2 pl-5 md:basis-1/3 lg:basis-1/4 2xl:basis-1/5 2xl:pl-8"
             >
               <MovieCard movie={movie} />
             </CarouselItem>

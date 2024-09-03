@@ -13,6 +13,15 @@ const Homepage = () => {
       <MovieSlide category="now_playing" slideName="Now Playing" />
       <MovieSlide category="top_rated" slideName="Top Rated" />
       <MovieSlide category="upcoming" slideName="Upcoming" />
+      <MovieSlide category="upcoming" slideName="Upcoming" />
+      <MovieSlide category="upcoming" slideName="Upcoming" />
+      <MovieSlide category="upcoming" slideName="Upcoming" />
+      <MovieSlide category="upcoming" slideName="Upcoming" />
+      <MovieSlide category="upcoming" slideName="Upcoming" />
+      <MovieSlide category="upcoming" slideName="Upcoming" />
+      <MovieSlide category="upcoming" slideName="Upcoming" />
+      <MovieSlide category="upcoming" slideName="Upcoming" />
+      <MovieSlide category="upcoming" slideName="Upcoming" />
     </div>
   );
 };
