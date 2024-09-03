@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { HiHome } from "react-icons/hi";
 import { IoSearch } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa";
@@ -6,7 +6,7 @@ import { BiCameraMovie } from "react-icons/bi";
 import { FiTv } from "react-icons/fi";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import MenuItem from "./components/MenuItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import background from "../assets/background.png";
@@ -40,6 +40,12 @@ const AppLayout = () => {
     },
   ];
   const [mobileMenuToggle, setMobileMenuToggle] = useState(false);
+
+  // When page changes, the mobile popup menu disappears.
+  const { pathname } = useLocation();
+  useEffect(() => {
+    setMobileMenuToggle(false);
+  }, [pathname]);
 
   return (
     <div

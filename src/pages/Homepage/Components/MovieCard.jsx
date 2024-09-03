@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 
 const MovieCard = ({ movie }) => {
   return (
-    <div className="group/card relative cursor-pointer overflow-hidden rounded-lg outline outline-2 outline-offset-4 outline-white/0 transition-all duration-500 before:absolute before:block before:aspect-[4/6] before:w-full before:bg-slate-800 before:opacity-0 hover:scale-105 hover:outline-white hover:before:opacity-50">
+    <div className="group/card relative cursor-pointer overflow-hidden rounded-xl outline outline-2 outline-offset-4 outline-white/0 transition-all duration-500 before:absolute before:block before:aspect-[4/6] before:w-full before:bg-slate-800 before:opacity-0 hover:scale-105 hover:outline-white hover:before:opacity-50">
       <img
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.title}
