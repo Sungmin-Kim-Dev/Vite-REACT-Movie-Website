@@ -9,7 +9,7 @@
     font-family: "SUIT Variable", "SUITE Variable", "Noto Sans KR",
       ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    @apply h-full
+    @apply h-full;
   }
   :root {
     --background: 0 0% 100%;
@@ -110,5 +110,15 @@
   }
   .global-mx {
     @apply mx-10 md:mx-14 lg:mx-16 xl:mx-[4.375rem];
+  }
+
+  .pagination-btn {
+    @apply inline-flex gap-1 h-12 cursor-pointer items-center justify-center rounded-lg py-2 transition hover:bg-zinc-700;
+  }
+  .pagination-item {
+    @apply inline-flex size-12 cursor-pointer items-center justify-center rounded-lg text-lg transition hover:bg-zinc-700;
+  }
+  .pagination-btn-disabled {
+    @apply pointer-events-none opacity-50;
   }
 }
