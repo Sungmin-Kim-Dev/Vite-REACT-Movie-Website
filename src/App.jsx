@@ -28,9 +28,8 @@ function App() {
           <Route index element={<SeriesPage />} />
           <Route path=":id" element={<SeriesDetailPage />} />
         </Route>
+        <Route path="/*" element={<NotFoundPage />}></Route>
       </Route>
-
-      <Route path="/*" element={<NotFoundPage />}></Route>
     </Routes>
   );
 }
