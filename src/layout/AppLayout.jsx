@@ -97,7 +97,7 @@ const AppLayout = () => {
                   <BsThreeDotsVertical className="size-6 xl:size-5" />
                 </button>
                 <ul
-                  className={`${mobileMenuToggle ? "block" : "hidden"} absolute border border-neutral-500 border-opacity-35 py-2 pe-12 ps-4 top-12 bg-black/90 group-hover:block`}
+                  className={`${mobileMenuToggle ? "block" : "hidden"} absolute border border-neutral-500 border-opacity-35 py-2 pe-12 ps-4 top-12 bg-black/90 group-hover:block z-50`}
                 >
                   {menuItems.map(
                     ({ itemName, itemLink, Icon }, index) =>

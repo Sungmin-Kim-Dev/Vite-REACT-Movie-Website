@@ -17,9 +17,9 @@ const Banner = () => {
       style={{
         backgroundImage: `url(https://image.tmdb.org/t/p/original${data.backdrop_path})`,
       }}
-      className="global-px h-[56dvh] bg-cover bg-center bg-no-repeat pb-16 before:absolute before:left-0 before:h-[56dvh] before:w-full before:bg-gradient-to-t before:from-black before:to-transparent"
+      className="global-px h-[56dvh] bg-cover bg-center bg-no-repeat pb-16 before:absolute before:left-0 before:h-[56dvh] before:w-full before:bg-gradient-to-t before:from-black before:to-transparent before:to-60%"
     >
-      <div className="relative z-10 flex h-full flex-col justify-end space-y-6 text-gray-200 md:w-2/5">
+      <div className="relative flex h-full flex-col justify-end space-y-6 text-gray-200 md:w-2/5">
         <h1 className="text-5xl font-semibold">{data.title}</h1>
         <p className="hidden text-xl sm:block">{data.overview}</p>
       </div>
