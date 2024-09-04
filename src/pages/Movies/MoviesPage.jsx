@@ -33,8 +33,13 @@ const MoviesPage = () => {
   const [query, setQuery] = useSearchParams();
   const [page, setPage] = useState(1);
   const keyword = query.get("q");
-  const { data, isLoading, isError, error } = useMovieSearch(keyword);
-  const handlePageClick = () => {};
+  const { data, isLoading, isError, error } = useMovieSearch(keyword, page);
+  console.log(data);
+
+  const handlePageClick = ({ selected }) => {
+    console.log(selected + 1);
+    setPage(selected + 1);
+  };
 
   if (isLoading) {
     return <SlideSkeleton />;
@@ -58,8 +63,11 @@ const MoviesPage = () => {
       </div>
       <ReactPaginate
         onPageChange={handlePageClick}
-        pageRangeDisplayed={10}
-        pageCount={page} // Total page
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={2}
+        forcePage={page - 1}
+        // page limit to 50
+        pageCount={data?.total_pages > 50 ? 50 : data.total_pages} // Total page
         renderOnZeroPageCount={null}
         previousLabel={<PagePrevBtn />}
         nextLabel={<PageNextBtn />}
@@ -69,7 +77,8 @@ const MoviesPage = () => {
         nextLinkClassName="pagination-btn pl-4 pr-2.5"
         pageLinkClassName="pagination-item"
         breakLinkClassName="pagination-item"
-        activeClassName="pagination-item hover:border-0 border border-neutral-300"
+        activeLinkClassName="pagination-item hover:border-0 border border-neutral-300"
+        disabledLinkClassName="pagination-btn-disabled"
       />
     </div>
   );
