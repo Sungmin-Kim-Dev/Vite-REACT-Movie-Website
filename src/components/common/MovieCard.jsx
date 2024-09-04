@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { useMovieGenreQuery } from "@/hooks/useMovieGenre";
 import { FaStar } from "react-icons/fa";
 import { FaThumbsUp } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
   const { data: movieGenreData } = useMovieGenreQuery();
@@ -14,14 +15,22 @@ const MovieCard = ({ movie }) => {
     // console.log(genreNameList);
     return genreNameList;
   };
+  const navigate = useNavigate();
 
   return (
-    <div className="group/card relative cursor-pointer overflow-hidden rounded-xl outline outline-2 outline-offset-4 outline-white/0 transition-all duration-300 before:absolute before:block before:aspect-[4/6] before:w-full before:bg-slate-800 before:opacity-0 before:duration-300 hover:scale-105 hover:outline-white hover:before:opacity-50">
-      <img
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-        alt={movie.title ? movie.title : movie.name}
-        className="w-full"
-      />
+    <div
+      className="group/card relative cursor-pointer overflow-hidden rounded-xl outline outline-2 outline-offset-4 outline-white/0 transition-all duration-300 before:absolute before:block before:aspect-[4/6] before:w-full before:bg-slate-800 before:opacity-0 before:duration-300 hover:scale-105 hover:outline-white hover:before:opacity-50"
+      onClick={() => navigate(`/movies/${movie?.id}`)}
+    >
+      {movie.poster_path ? (
+        <img
+          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          alt={movie.title ? movie.title : movie.name}
+          className="h-full"
+        />
+      ) : (
+        <div className="h-full bg-zinc-600"></div>
+      )}
       <div className="movie-info absolute bottom-3 translate-y-full px-4 transition-all duration-300 group-hover/card:translate-y-0">
         <p className="my-3 text-2xl font-bold">
           {movie.title ? movie.title : movie.name}
@@ -30,7 +39,7 @@ const MovieCard = ({ movie }) => {
           ""
         ) : (
           <div className="badge-box md mb-2 flex flex-wrap gap-3">
-            {showGenre(movie.genre_ids).map((id, index) => (
+            {showGenre(movie.genre_ids)?.map((id, index) => (
               <Badge
                 key={index}
                 className="bg-orange-600 text-lg hover:bg-orange-600"

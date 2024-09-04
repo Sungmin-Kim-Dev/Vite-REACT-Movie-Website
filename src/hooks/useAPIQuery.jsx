@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export const useAPIQuery = (address) => {
   const fetchAPI = () => {
-    return api.get(`/${address}`);
+    return api.get(`${address}`);
   };
   return useQuery({
     queryKey: [`${address}`],

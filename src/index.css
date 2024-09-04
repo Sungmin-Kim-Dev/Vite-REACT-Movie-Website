@@ -9,6 +9,7 @@
     font-family: "SUIT Variable", "SUITE Variable", "Noto Sans KR",
       ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    @apply h-full
   }
   :root {
     --background: 0 0% 100%;

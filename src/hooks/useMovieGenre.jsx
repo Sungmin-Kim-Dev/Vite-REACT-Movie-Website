@@ -2,7 +2,7 @@ import api from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 
 const fetchMovieGenre = () => {
-  return api.get(`/genre/movie/list`);
+  return api.get(`genre/movie/list`);
 };
 
 export const useMovieGenreQuery = () => {

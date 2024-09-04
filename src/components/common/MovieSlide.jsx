@@ -32,7 +32,7 @@ const MovieSlide = ({ address, slideName }) => {
       >
         <h3 className="text-2xl font-bold">{slideName}</h3>
         <CarouselContent className="-ml-5 2xl:-ml-8">
-          {data.results.map((movie, index) => (
+          {data?.results.map((movie, index) => (
             <CarouselItem
               key={index}
               className="aspect-[4/6] basis-1/2 pl-5 md:basis-1/3 lg:basis-1/4 2xl:basis-1/5 2xl:pl-8"

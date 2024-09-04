@@ -4,7 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const Banner = () => {
   const { data, isLoading, isError, error } = useMoviesQuery(1022789);
-  console.table("data:", data);
+  // console.table("data:", data);
 
   if (isLoading) {
     return <Skeleton className="global-px h-[56dvh]" />;

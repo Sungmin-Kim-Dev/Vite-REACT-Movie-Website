@@ -1,4 +1,4 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { HiHome } from "react-icons/hi";
 import { IoSearch } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa";
@@ -42,17 +42,27 @@ const AppLayout = () => {
   const [mobileMenuToggle, setMobileMenuToggle] = useState(false);
 
   // When page changes, the mobile popup menu disappears.
+  // When page changes, scrolls to the top.
   const { pathname } = useLocation();
   useEffect(() => {
     setMobileMenuToggle(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pathname]);
+  const [keyword, setKeyword] = useState("");
+  const navigate = useNavigate();
+  const searchByKeyword = (event) => {
+    event.preventDefault();
+    // change API URL with keywords
+    navigate(`/movies?q=${keyword}`);
+    setKeyword("");
+  };
 
   return (
     <div
-      className="min-h-dvh overflow-x-hidden bg-black text-slate-50"
+      className="min-h-dvh bg-black text-neutral-50"
       style={{ background: `url(${background}) 50%/cover no-repeat fixed` }}
     >
-      <header className="relative z-10">
+      <header className="sticky top-0 z-10 bg-black">
         <div className="after:after-gradient flex h-[4.5rem] items-center px-5 md:px-9">
           <h1>
             <Link
@@ -97,7 +107,7 @@ const AppLayout = () => {
                   <BsThreeDotsVertical className="size-6 xl:size-5" />
                 </button>
                 <ul
-                  className={`${mobileMenuToggle ? "block" : "hidden"} absolute border border-neutral-500 border-opacity-35 py-2 pe-12 ps-4 top-12 bg-black/90 group-hover:block z-50`}
+                  className={`${mobileMenuToggle ? "block" : "hidden"} absolute top-12 z-50 border border-neutral-500 border-opacity-35 bg-black/90 py-2 pe-12 ps-4 group-hover:block`}
                 >
                   {menuItems.map(
                     ({ itemName, itemLink, Icon }, index) =>
@@ -115,12 +125,21 @@ const AppLayout = () => {
               </li>
             </ul>
           </nav>
-          <div className="hidden max-w-sm items-center space-x-2 md:flex">
-            <Input type="text" placeholder="Search" />
+          <form
+            className="hidden max-w-sm items-center space-x-2 md:flex"
+            onSubmit={searchByKeyword}
+          >
+            <Input
+              type="search"
+              placeholder="Search"
+              className="text-xl text-slate-900"
+              value={keyword}
+              onChange={(event) => setKeyword(event.target.value)}
+            />
             <Button type="submit" className="bg-sky-500 hover:bg-sky-700">
               Search
             </Button>
-          </div>
+          </form>
         </div>
       </header>
       <main>
