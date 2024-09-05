@@ -35,7 +35,7 @@ const MovieSlide = ({ address, slideName }) => {
           {data?.results.map((movie, index) => (
             <CarouselItem
               key={index}
-              className="aspect-[4/6] basis-1/2 pl-5 md:basis-1/3 lg:basis-1/4 2xl:basis-1/5 2xl:pl-8"
+              className="basis-1/2 pl-5 md:basis-1/3 lg:basis-1/4 2xl:basis-1/5 2xl:pl-8"
             >
               <MovieCard movie={movie} />
             </CarouselItem>

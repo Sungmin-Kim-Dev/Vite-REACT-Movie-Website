@@ -1,9 +1,7 @@
 import * as React from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
 const CarouselContext = React.createContext(null);
 
@@ -128,7 +126,7 @@ const CarouselContent = React.forwardRef(({ className, ...props }, ref) => {
   return (
     <div
       ref={carouselRef}
-      className="-mx-4 overflow-hidden px-4 py-6 2xl:-mx-6 2xl:px-6"
+      className="-global-mx global-px overflow-x-hidden py-6"
     >
       <div
         ref={ref}
@@ -168,14 +166,14 @@ const CarouselPrevious = React.forwardRef(
     const { orientation, scrollPrev, canScrollPrev } = useCarousel();
 
     return (
-      <Button
+      <button
         ref={ref}
         variant={variant}
         size={size}
         className={cn(
-          "absolute h-8 w-8 rounded-full",
+          "global-width -global-left group/button absolute bottom-6 top-14 flex items-center justify-start bg-gradient-to-l from-transparent to-neutral-800 disabled:hidden",
           orientation === "horizontal"
-            ? "-left-12 top-1/2 -translate-y-1/2"
+            ? ""
             : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
           className,
         )}
@@ -183,9 +181,9 @@ const CarouselPrevious = React.forwardRef(
         onClick={scrollPrev}
         {...props}
       >
-        <ArrowLeft className="h-4 w-4" />
+        <FaAngleLeft className="ml-2 text-4xl text-slate-100/80 opacity-0 transition-opacity duration-300 group-hover/button:opacity-100" />
         <span className="sr-only">Previous slide</span>
-      </Button>
+      </button>
     );
   },
 );
@@ -196,14 +194,14 @@ const CarouselNext = React.forwardRef(
     const { orientation, scrollNext, canScrollNext } = useCarousel();
 
     return (
-      <Button
+      <button
         ref={ref}
         variant={variant}
         size={size}
         className={cn(
-          "absolute h-8 w-8 rounded-full",
+          "global-width -global-right group/button absolute bottom-6 top-14 flex items-center justify-end bg-gradient-to-r from-transparent to-neutral-900 disabled:hidden",
           orientation === "horizontal"
-            ? "-right-12 top-1/2 -translate-y-1/2"
+            ? ""
             : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
           className,
         )}
@@ -211,9 +209,9 @@ const CarouselNext = React.forwardRef(
         onClick={scrollNext}
         {...props}
       >
-        <ArrowRight className="h-4 w-4" />
+        <FaAngleRight className="mr-2 text-4xl text-slate-100/80 opacity-0 transition-opacity duration-300 group-hover/button:opacity-100" />
         <span className="sr-only">Next slide</span>
-      </Button>
+      </button>
     );
   },
 );

@@ -29,6 +29,7 @@ const MoviesPage = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [page]);
+
   if (isLoading) {
     return <SlideSkeleton />;
   }

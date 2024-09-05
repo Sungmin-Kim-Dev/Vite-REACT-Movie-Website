@@ -1,17 +1,17 @@
 import api from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 
-export const useMoviesQuery = (category) => {
-  const fetchMovies = () => {
-    return api.get(`movie/${category}`, {
+export const useSeriesQuery = (category) => {
+  const fetchSeries = () => {
+    return api.get(`tv/${category}`, {
       params: {
         language: "en-US",
       },
     });
   };
   return useQuery({
-    queryKey: [`movie-${category}`],
-    queryFn: fetchMovies,
+    queryKey: [`series-${category}`],
+    queryFn: fetchSeries,
     select: (result) => result.data,
   });
 };

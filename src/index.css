@@ -108,12 +108,27 @@
   .global-px {
     @apply px-10 md:px-14 lg:px-16 xl:px-[4.375rem];
   }
+  .-global-px {
+    @apply -px-10 md:-px-14 lg:-px-16 xl:-px-[4.375rem];
+  }
   .global-mx {
     @apply mx-10 md:mx-14 lg:mx-16 xl:mx-[4.375rem];
   }
+  .-global-mx {
+    @apply -mx-10 md:-mx-14 lg:-mx-16 xl:-mx-[4.375rem];
+  }
+  .global-width {
+    @apply w-10 md:w-14 lg:w-16 xl:w-[4.375rem];
+  }
+  .-global-left {
+    @apply -left-10 md:-left-14 lg:-left-16 xl:-left-[4.375rem];
+  }
+  .-global-right {
+    @apply -right-10 md:-right-14 lg:-right-16 xl:-right-[4.375rem];
+  }
 
   .pagination-btn {
-    @apply inline-flex gap-1 h-12 cursor-pointer items-center justify-center rounded-lg py-2 transition hover:bg-zinc-700;
+    @apply inline-flex h-12 cursor-pointer items-center justify-center gap-1 rounded-lg py-2 transition hover:bg-zinc-700;
   }
   .pagination-item {
     @apply inline-flex size-12 cursor-pointer items-center justify-center rounded-lg text-lg transition hover:bg-zinc-700;

@@ -57,7 +57,7 @@ const AppLayout = () => {
 
   return (
     <div
-      className="min-h-dvh bg-black text-neutral-50"
+      className="min-h-dvh select-none bg-black text-neutral-50"
       style={{ background: `url(${background}) 50%/cover no-repeat fixed` }}
     >
       <header className="sticky top-0 z-10 bg-black">

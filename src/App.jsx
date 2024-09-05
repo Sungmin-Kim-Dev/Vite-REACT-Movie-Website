@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import AppLayout from "./layout/AppLayout";
-import Homepage from "./pages/Homepage/Homepage";
-import MoviesPage from "./pages/Movies/MoviesPage";
-import MovieDetailPage from "./pages/MovieDetail/MovieDetailPage";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import SearchPage from "./pages/Search/SearchPage";
-import WatchListPage from "./pages/WatchList/WatchListPage";
-import SeriesPage from "./pages/Series/SeriesPage";
-import SeriesDetailPage from "./pages/SeriesDetail/SeriesDetailPage";
+import Homepage from "./pages/Homepage";
+import MoviesPage from "./pages/MoviesPage";
+import MovieDetailPage from "./pages/MovieDetailPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import SearchPage from "./pages/SearchPage";
+import WatchListPage from "./pages/WatchListPage";
+import SeriesPage from "./pages/SeriesPage";
+import SeriesDetailPage from "./pages/SeriesDetailPage";
 
 // Homepage  /
 // movie all page  /movies?q=
