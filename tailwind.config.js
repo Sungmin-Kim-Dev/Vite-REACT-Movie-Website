@@ -5,7 +5,8 @@ export default {
   theme: {
     extend: {
       screens: {
-        '2xl': '1440px',
+        xs: "400px",
+        "2xl": "1440px",
       },
       borderRadius: {
         lg: "var(--radius)",

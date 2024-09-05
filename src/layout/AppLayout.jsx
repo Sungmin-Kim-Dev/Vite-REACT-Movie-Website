@@ -4,7 +4,6 @@ import { IoSearch } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa";
 import { BiCameraMovie } from "react-icons/bi";
 import { FiTv } from "react-icons/fi";
-import { BsThreeDotsVertical } from "react-icons/bs";
 import MenuItem from "./components/MenuItem";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -39,15 +38,14 @@ const AppLayout = () => {
       Icon: FiTv,
     },
   ];
-  const [mobileMenuToggle, setMobileMenuToggle] = useState(false);
 
   // When page changes, the mobile popup menu disappears.
   // When page changes, scrolls to the top.
   const { pathname } = useLocation();
   useEffect(() => {
-    setMobileMenuToggle(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pathname]);
+
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
   const searchByKeyword = (event) => {
@@ -67,13 +65,13 @@ const AppLayout = () => {
           <h1>
             <Link
               to="/"
-              className="mr-8 block h-[2.375rem] w-[4.25rem] bg-slate-300 px-5 md:h-12 md:w-[5.375rem]"
+              className="xs:mr-8 mr-2 block h-[2.375rem] w-[4.25rem] bg-slate-300 px-5 md:h-12 md:w-[5.375rem]"
             >
               LOGO
             </Link>
           </h1>
           <nav className="mr-auto">
-            <ul className="hidden md:flex">
+            <ul className="flex">
               {menuItems.map(({ itemName, itemLink, Icon }) => (
                 <MenuItem
                   key={itemName}
@@ -83,46 +81,6 @@ const AppLayout = () => {
                   iconUnderline={true}
                 />
               ))}
-            </ul>
-
-            {/* Mobile menu */}
-            <ul className="flex md:hidden">
-              {menuItems.map(
-                ({ itemName, itemLink, Icon }, index) =>
-                  index < 3 && (
-                    <MenuItem
-                      key={itemName}
-                      itemName=""
-                      itemLink={itemLink}
-                      Icon={Icon}
-                      iconUnderline={true}
-                    />
-                  ),
-              )}
-              <li className="group relative">
-                <button
-                  className="flex items-center gap-2 px-3 py-4 font-bold xl:px-[1.125rem] xl:py-4"
-                  onClick={() => setMobileMenuToggle(!mobileMenuToggle)}
-                >
-                  <BsThreeDotsVertical className="size-6 xl:size-5" />
-                </button>
-                <ul
-                  className={`${mobileMenuToggle ? "block" : "hidden"} absolute top-12 z-50 border border-neutral-500 border-opacity-35 bg-black/90 py-2 pe-12 ps-4 group-hover:block`}
-                >
-                  {menuItems.map(
-                    ({ itemName, itemLink, Icon }, index) =>
-                      index > 2 && (
-                        <MenuItem
-                          key={itemName}
-                          itemName={itemName}
-                          itemLink={itemLink}
-                          Icon={Icon}
-                          iconUnderline={false}
-                        />
-                      ),
-                  )}
-                </ul>
-              </li>
             </ul>
           </nav>
           <form
