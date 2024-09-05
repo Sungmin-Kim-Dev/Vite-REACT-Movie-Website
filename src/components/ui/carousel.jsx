@@ -199,7 +199,7 @@ const CarouselNext = React.forwardRef(
         variant={variant}
         size={size}
         className={cn(
-          "global-width -global-right group/button absolute bottom-6 top-14 flex items-center justify-end bg-gradient-to-r from-transparent to-neutral-900 disabled:hidden",
+          "global-width -global-right group/button absolute bottom-6 top-14 flex -translate-x-px items-center justify-end bg-gradient-to-r from-transparent to-neutral-900 disabled:hidden",
           orientation === "horizontal"
             ? ""
             : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
