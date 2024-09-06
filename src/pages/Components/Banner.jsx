@@ -1,6 +1,7 @@
 import { useMoviesQuery } from "@/hooks/useMoviesQuery";
 import ErrorCard from "@/components/common/ErrorCard";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 const randomNumArray = (min, max, index) => {
   const answer = new Array();
@@ -14,7 +15,11 @@ const randomNumArray = (min, max, index) => {
 };
 
 const Banner = () => {
-  const { data, isLoading, isError, error } = useMoviesQuery(1022789);
+  const [languageCode] = useLocalStorage("languageCode", "en-US");
+  const { data, isLoading, isError, error } = useMoviesQuery(
+    1022789,
+    languageCode,
+  );
   // console.table("data:", data);
 
   console.log(randomNumArray(0, 19, 5));

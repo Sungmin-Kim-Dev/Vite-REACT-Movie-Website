@@ -10,9 +10,15 @@ import { useAPIQuery } from "@/hooks/useAPIQuery";
 import ErrorCard from "@/components/common/ErrorCard";
 import MovieCard from "./MovieCard";
 import SlideSkeleton from "./SlideSkeleton";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 const MovieSlide = ({ address, slideName }) => {
-  const { data, isLoading, isError, error } = useAPIQuery(address);
+  const [languageCode] = useLocalStorage("languageCode", "en-US");
+
+  const { data, isLoading, isError, error } = useAPIQuery(
+    address,
+    languageCode,
+  );
 
   if (isLoading) {
     return <SlideSkeleton />;

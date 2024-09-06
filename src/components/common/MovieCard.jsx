@@ -1,12 +1,17 @@
 /* eslint-disable react/prop-types */
 import { Badge } from "@/components/ui/badge";
 import { useGenreQuery } from "@/hooks/useGenreQuery";
+import { useLocalStorage } from "@uidotdev/usehooks";
 import { FaStar } from "react-icons/fa";
 import { FaThumbsUp } from "react-icons/fa";
+// import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
-  const { data: movieGenreData } = useGenreQuery("movie");
+  // const langCode = useSelector((state) => state.code.code);
+  // console.log(langCode);
+  const [languageCode] = useLocalStorage("languageCode", "en-US");
+  const { data: movieGenreData } = useGenreQuery("movie", languageCode);
   const showGenre = (genreIdList) => {
     if (!movieGenreData) return [];
     const genreNameList = genreIdList.map((id) => {
@@ -15,6 +20,8 @@ const MovieCard = ({ movie }) => {
     // console.log(genreNameList);
     return genreNameList;
   };
+  // console.log(movieGenreData);
+
   const navigate = useNavigate();
 
   return (
@@ -26,7 +33,7 @@ const MovieCard = ({ movie }) => {
         <img
           src={`https://image.tmdb.org/t/p/w500${movie?.poster_path}`}
           alt={movie?.title}
-          className="object-cover size-full"
+          className="size-full object-cover"
         />
       ) : (
         <div className="h-full bg-zinc-600"></div>

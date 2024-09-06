@@ -10,16 +10,34 @@ import background from "../assets/background.png";
 import logo from "../assets/logo.png";
 import { languageList, menuItems } from "@/pages/Constants/headerConst";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { setCode } from "@/redux/slice/languageCodeSlice";
+import { useLocalStorage } from "@uidotdev/usehooks";
+import i18next from "i18next";
 
 const AppLayout = () => {
   // When page changes, the mobile popup menu disappears.
   // When page changes, scrolls to the top.
-  const { pathname } = useLocation();
+  const { location } = useLocation();
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setLanguageMenu(false);
-  }, [pathname]);
+  }, [location]);
+
+  const [, saveLanguageCode] = useLocalStorage("languageCode", "en-US");
+
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const setLanguageCode = (language, country) => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    dispatch(setCode({ language, country }));
+    setLanguageMenu(false);
+    navigate(`?language=${language}-${country}`);
+    saveLanguageCode(`${language}-${country}`);
+    i18next.changeLanguage(language);
+    window.location.reload();
+  };
+
   const [keyword, setKeyword] = useState("");
   const [languageMenu, setLanguageMenu] = useState(false);
   const navigate = useNavigate();
@@ -87,14 +105,17 @@ const AppLayout = () => {
             <ul
               className={`${languageMenu ? "block" : "hidden"} absolute right-0 top-full rounded-xl border border-neutral-400 border-opacity-40 bg-neutral-800/80 p-3`}
             >
-              {languageList.map(({ languageName, countryCode }, i) => (
-                <li
-                  key={i}
-                  className="after:hover-underline relative mx-4 w-max cursor-pointer py-2 text-lg font-semibold hover:after:scale-x-100 hover:after:opacity-100"
-                >
-                  {t(`${languageName}`)} ({countryCode})
-                </li>
-              ))}
+              {languageList.map(
+                ({ languageName, languageCode, countryCode }, i) => (
+                  <li
+                    key={i}
+                    className="after:hover-underline relative mx-4 w-max cursor-pointer py-2 text-lg font-semibold hover:after:scale-x-100 hover:after:opacity-100"
+                    onClick={() => setLanguageCode(languageCode, countryCode)}
+                  >
+                    {t(`${languageName}`)} ({countryCode})
+                  </li>
+                ),
+              )}
             </ul>
           </div>
         </div>

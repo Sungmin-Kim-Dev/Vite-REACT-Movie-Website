@@ -1,5 +1,7 @@
 import Banner from "./Components/Banner";
 import MovieSlide from "../components/common/MovieSlide";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 // 1. Banner - Top Popular movies
 // 2. Popular Movies
@@ -7,17 +9,21 @@ import MovieSlide from "../components/common/MovieSlide";
 // 4. Upcoming Movies
 
 const Homepage = () => {
+  const { t } = useTranslation();
+  const langCode = useSelector((state) => state.code.code);
+  console.log(langCode);
+
   return (
     <div>
       <Banner />
       <MovieSlide
         address="trending/movie/day"
-        slideName="Movie Now Trending"
+        slideName={t(`MovieNowTrending`)}
       />
-      <MovieSlide address="movie/popular" slideName="Popular Movies" />
-      <MovieSlide address="movie/now_playing" slideName="Now Playing" />
-      <MovieSlide address="movie/top_rated" slideName="Top Rated" />
-      <MovieSlide address="movie/upcoming" slideName="Upcoming" />
+      <MovieSlide address="movie/popular" slideName={t(`PopularMovies`)} />
+      <MovieSlide address="movie/now_playing" slideName={t(`NowPlaying`)} />
+      <MovieSlide address="movie/top_rated" slideName={t(`TopRatedMovies`)} />
+      <MovieSlide address="movie/upcoming" slideName={t(`Upcoming`)} />
     </div>
   );
 };

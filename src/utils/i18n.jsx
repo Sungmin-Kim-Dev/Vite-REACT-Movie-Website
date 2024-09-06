@@ -16,8 +16,13 @@ const resources = {
       English: "English",
       Korean: "Korean",
       SearchText: "Search Movies and Series",
-      NoResults: "No search result for",
+      NoResults: 'No search result for "{{keyword}}"',
       Keyword: "Enter Keyword",
+      MovieNowTrending: "Movie Now Trending",
+      PopularMovies: "Popular Movies",
+      NowPlaying: "Now Playing",
+      TopRatedMovies: "Top Rated Movies",
+      Upcoming: "Upcoming",
     },
   },
   ko: {
@@ -31,8 +36,13 @@ const resources = {
       English: "영어",
       Korean: "한국어",
       SearchText: "영화와 시리즈를 검색해 보세요",
-      NoResults: "에 대한 검색 결과 없음",
+      NoResults: '"{{keyword}}"에 대한 검색 결과 없음',
       Keyword: "키워드 입력",
+      MovieNowTrending: "영화 트렌드",
+      PopularMovies: "인기 영화",
+      NowPlaying: "지금 상영 중",
+      TopRatedMovies: "명작 영화",
+      Upcoming: "신작 영화",
     },
   },
 };
@@ -42,7 +52,7 @@ i18n
   .init({
     resources,
     fallbackLng: "en",
-    lng: "ko",
+    lng: "en",
     interpolation: {
       escapeValue: false, // react already safes from xss
     },

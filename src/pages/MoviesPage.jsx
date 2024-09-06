@@ -3,6 +3,7 @@ import MovieCard from "@/components/common/MovieCard";
 import PaginationComponent from "@/components/common/PaginationComponent";
 import SlideSkeleton from "@/components/common/SlideSkeleton";
 import { useMovieSearch } from "@/hooks/useMovieSearch";
+import { useLocalStorage } from "@uidotdev/usehooks";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSearchParams } from "react-router-dom";
@@ -12,11 +13,16 @@ import { useSearchParams } from "react-router-dom";
 // as clicking pagination, change pages
 
 const MoviesPage = () => {
+  const [languageCode] = useLocalStorage("languageCode", "en-US");
   // eslint-disable-next-line no-unused-vars
   const [query, setQuery] = useSearchParams();
   const [page, setPage] = useState(1);
   const keyword = query.get("q");
-  const { data, isLoading, isError, error } = useMovieSearch(keyword, page);
+  const { data, isLoading, isError, error } = useMovieSearch(
+    keyword,
+    page,
+    languageCode,
+  );
   console.log(data);
 
   const handlePageClick = ({ selected }) => {
@@ -50,8 +56,7 @@ const MoviesPage = () => {
       </div>
       {data?.results.length == 0 ? (
         <div className="mb-auto text-center text-3xl font-bold md:text-5xl">
-          No search result for &quot;{keyword}&quot;
-          {/* ""에 대한 검색 결과 없음 */}
+          {t("NoResults", { keyword: keyword })}
         </div>
       ) : (
         <>
