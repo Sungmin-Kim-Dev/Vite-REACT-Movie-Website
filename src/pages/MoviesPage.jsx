@@ -4,6 +4,7 @@ import PaginationComponent from "@/components/common/PaginationComponent";
 import SlideSkeleton from "@/components/common/SlideSkeleton";
 import { useMovieSearch } from "@/hooks/useMovieSearch";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useSearchParams } from "react-router-dom";
 
 // Pagination
@@ -22,6 +23,7 @@ const MoviesPage = () => {
     console.log(selected + 1);
     setPage(selected + 1);
   };
+  const { t } = useTranslation();
 
   useEffect(() => {
     setPage(1);
@@ -39,7 +41,9 @@ const MoviesPage = () => {
 
   return (
     <div className="global-px pb-10">
-      <h1 className="my-10 text-center text-4xl font-extrabold">Movies</h1>
+      <h1 className="my-10 text-center text-4xl font-extrabold">
+        {t(`Movies`)}
+      </h1>
       <div className="genre-button-box mb-10 h-10 overflow-x-visible">
         Movie Genre Buttons filtering
         {/* px-4 gap-x-5 bg-[#364154] hover:bg-[#F9F9F9CC] hover:text-black */}

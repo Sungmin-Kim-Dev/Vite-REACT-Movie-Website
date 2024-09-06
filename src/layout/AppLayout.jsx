@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { HiHome } from "react-icons/hi";
-import { IoSearch } from "react-icons/io5";
-import { FaPlus } from "react-icons/fa";
-import { BiCameraMovie } from "react-icons/bi";
-import { FiTv } from "react-icons/fi";
 import { FaGithub } from "react-icons/fa6";
 import { MdOutlineEmail } from "react-icons/md";
 import { BsGlobe2 } from "react-icons/bs";
@@ -13,36 +8,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import background from "../assets/background.png";
 import logo from "../assets/logo.png";
+import { languageList, menuItems } from "@/pages/Constants/headerConst";
+import { useTranslation } from "react-i18next";
 
 const AppLayout = () => {
-  const menuItems = [
-    {
-      itemName: "HOME",
-      itemLink: "",
-      Icon: HiHome,
-    },
-    {
-      itemName: "SEARCH",
-      itemLink: "search",
-      Icon: IoSearch,
-    },
-    {
-      itemName: "WATCH LIST",
-      itemLink: "watchlist",
-      Icon: FaPlus,
-    },
-    {
-      itemName: "MOVIES",
-      itemLink: "movies",
-      Icon: BiCameraMovie,
-    },
-    {
-      itemName: "SERIES",
-      itemLink: "series",
-      Icon: FiTv,
-    },
-  ];
-
   // When page changes, the mobile popup menu disappears.
   // When page changes, scrolls to the top.
   const { pathname } = useLocation();
@@ -50,7 +19,7 @@ const AppLayout = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setLanguageMenu(false);
   }, [pathname]);
-
+  const { t } = useTranslation();
   const [keyword, setKeyword] = useState("");
   const [languageMenu, setLanguageMenu] = useState(false);
   const navigate = useNavigate();
@@ -95,38 +64,37 @@ const AppLayout = () => {
           >
             <Input
               type="search"
-              placeholder="Search"
+              placeholder={t("Keyword")}
               className="w-4/5 text-xl text-slate-900"
               value={keyword}
               onChange={(event) => setKeyword(event.target.value)}
             />
-            <Button type="submit" className="bg-sky-500 hover:bg-sky-700">
-              Search
+            <Button
+              type="submit"
+              className="bg-sky-500 text-lg hover:bg-sky-700"
+            >
+              {t("Search")}
             </Button>
           </form>
-          <div className="language-btn relative mr-4">
+          <div className="language-btn relative ml-4">
             <button
-              className="flex items-center gap-x-2 px-2 py-4 text-2xl font-bold opacity-70 transition duration-300 hover:opacity-100 xs:px-3 xl:px-4 xl:py-4 xl:text-xl"
+              className="flex items-center gap-x-2 rounded-xl border p-3 text-2xl font-bold opacity-70 transition duration-300 hover:opacity-100 xl:text-xl"
               onClick={() => setLanguageMenu(!languageMenu)}
             >
               <BsGlobe2 />
-              <span className="hidden xl:inline-block">Language</span>
+              <span className="hidden xl:inline-block">{t("Language")}</span>
             </button>
             <ul
-              className={`${languageMenu ? "block" : "hidden"} absolute right-0 top-[4/5] border border-opacity-40 border-neutral-400 p-3 bg-neutral-800/80`}
+              className={`${languageMenu ? "block" : "hidden"} absolute right-0 top-full rounded-xl border border-neutral-400 border-opacity-40 bg-neutral-800/80 p-3`}
             >
-              <li className="after:hover-underline relative cursor-pointer p-2 text-lg font-semibold hover:after:scale-x-100 hover:after:opacity-100">
-                English(US)
-              </li>
-              <li className="after:hover-underline relative cursor-pointer p-2 text-lg font-semibold hover:after:scale-x-100 hover:after:opacity-100">
-                English(GB)
-              </li>
-              <li className="after:hover-underline relative cursor-pointer p-2 text-lg font-semibold hover:after:scale-x-100 hover:after:opacity-100">
-                English(AU)
-              </li>
-              <li className="after:hover-underline relative cursor-pointer p-2 text-lg font-semibold hover:after:scale-x-100 hover:after:opacity-100">
-                Korean
-              </li>
+              {languageList.map(({ languageName, countryCode }, i) => (
+                <li
+                  key={i}
+                  className="after:hover-underline relative mx-4 w-max cursor-pointer py-2 text-lg font-semibold hover:after:scale-x-100 hover:after:opacity-100"
+                >
+                  {t(`${languageName}`)} ({countryCode})
+                </li>
+              ))}
             </ul>
           </div>
         </div>
