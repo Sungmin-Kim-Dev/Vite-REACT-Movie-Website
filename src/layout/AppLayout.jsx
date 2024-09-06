@@ -7,6 +7,7 @@ import { BiCameraMovie } from "react-icons/bi";
 import { FiTv } from "react-icons/fi";
 import { FaGithub } from "react-icons/fa6";
 import { MdOutlineEmail } from "react-icons/md";
+import { BsGlobe2 } from "react-icons/bs";
 import MenuItem from "./components/MenuItem";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -45,11 +46,13 @@ const AppLayout = () => {
   // When page changes, the mobile popup menu disappears.
   // When page changes, scrolls to the top.
   const { pathname } = useLocation();
-  // useEffect(() => {
-  //   window.scrollTo({ top: 0, behavior: "smooth" });
-  // }, [pathname]);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setLanguageMenu(false);
+  }, [pathname]);
 
   const [keyword, setKeyword] = useState("");
+  const [languageMenu, setLanguageMenu] = useState(false);
   const navigate = useNavigate();
   const searchByKeyword = (event) => {
     event.preventDefault();
@@ -93,7 +96,7 @@ const AppLayout = () => {
             <Input
               type="search"
               placeholder="Search"
-              className="text-xl text-slate-900"
+              className="w-4/5 text-xl text-slate-900"
               value={keyword}
               onChange={(event) => setKeyword(event.target.value)}
             />
@@ -101,6 +104,31 @@ const AppLayout = () => {
               Search
             </Button>
           </form>
+          <div className="language-btn relative mr-4">
+            <button
+              className="flex items-center gap-x-2 px-2 py-4 text-2xl font-bold opacity-70 transition duration-300 hover:opacity-100 xs:px-3 xl:px-4 xl:py-4 xl:text-xl"
+              onClick={() => setLanguageMenu(!languageMenu)}
+            >
+              <BsGlobe2 />
+              <span className="hidden xl:inline-block">Language</span>
+            </button>
+            <ul
+              className={`${languageMenu ? "block" : "hidden"} absolute right-0 top-[4/5] border border-opacity-40 border-neutral-400 p-3`}
+            >
+              <li className="after:hover-underline relative cursor-pointer p-2 text-lg font-semibold hover:after:scale-x-100 hover:after:opacity-100">
+                English(US)
+              </li>
+              <li className="after:hover-underline relative cursor-pointer p-2 text-lg font-semibold hover:after:scale-x-100 hover:after:opacity-100">
+                English(GB)
+              </li>
+              <li className="after:hover-underline relative cursor-pointer p-2 text-lg font-semibold hover:after:scale-x-100 hover:after:opacity-100">
+                English(AU)
+              </li>
+              <li className="after:hover-underline relative cursor-pointer p-2 text-lg font-semibold hover:after:scale-x-100 hover:after:opacity-100">
+                Korean
+              </li>
+            </ul>
+          </div>
         </div>
       </header>
       <main className="pb-14">
@@ -131,7 +159,7 @@ const AppLayout = () => {
               href="mailto: dreamerk24dev@gmail.com"
               className="flex items-center gap-2 text-lg hover:underline"
             >
-              <MdOutlineEmail className='size-6'/>
+              <MdOutlineEmail className="size-6" />
               dreamerk24dev@gmail.com
             </a>
           </div>

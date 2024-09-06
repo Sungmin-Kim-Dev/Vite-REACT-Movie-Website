@@ -6,7 +6,7 @@ const MenuItem = ({ itemName, itemLink, Icon, iconUnderline }) => {
     <li className="group/item xs:first:block first:hidden">
       <Link
         to={itemLink}
-        className="flex items-center gap-2 px-3 py-4 font-bold xl:px-[1.125rem] xl:py-4"
+        className="flex items-center gap-2 px-2 xs:px-3 py-4 font-bold xl:px-4 xl:py-4"
       >
         <div
           className={`${iconUnderline ? "before:hover-underline" : ""} relative before:-bottom-2 xl:before:hidden`}
