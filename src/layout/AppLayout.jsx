@@ -100,7 +100,7 @@ const AppLayout = () => {
           </form>
         </div>
       </header>
-      <main>
+      <main className='pb-10'>
         <Outlet />
       </main>
     </div>
