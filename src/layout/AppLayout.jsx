@@ -113,7 +113,7 @@ const AppLayout = () => {
               <span className="hidden xl:inline-block">Language</span>
             </button>
             <ul
-              className={`${languageMenu ? "block" : "hidden"} absolute right-0 top-[4/5] border border-opacity-40 border-neutral-400 p-3`}
+              className={`${languageMenu ? "block" : "hidden"} absolute right-0 top-[4/5] border border-opacity-40 border-neutral-400 p-3 bg-neutral-800/80`}
             >
               <li className="after:hover-underline relative cursor-pointer p-2 text-lg font-semibold hover:after:scale-x-100 hover:after:opacity-100">
                 English(US)
