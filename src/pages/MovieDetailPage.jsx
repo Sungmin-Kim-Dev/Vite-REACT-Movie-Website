@@ -59,16 +59,20 @@ const MovieDetailPage = () => {
             ))}
           </div>
           <div className="my-10 flex gap-x-5">
-            <Popover>
-              <PopoverTrigger>
-                <div className="flex gap-x-3 rounded-lg bg-slate-600 px-4 py-3 hover:bg-slate-400">
-                  <FaPlay /> TRAILER
-                </div>
-                <PopoverContent className="global-mx w-auto bg-slate-300">
-                  <YouTube videoId={trailerInfo?.results[0].key} />
-                </PopoverContent>
-              </PopoverTrigger>
-            </Popover>
+            {trailerInfo?.results[0] ? (
+              <Popover>
+                <PopoverTrigger>
+                  <div className="flex gap-x-3 rounded-lg bg-slate-600 px-4 py-3 hover:bg-slate-400">
+                    <FaPlay /> TRAILER
+                  </div>
+                  <PopoverContent className="global-mx w-auto bg-slate-300">
+                    <YouTube videoId={trailerInfo?.results[0].key} />
+                  </PopoverContent>
+                </PopoverTrigger>
+              </Popover>
+            ) : (
+              ""
+            )}
             {/* <Button className="bg-slate-300">+</Button> */}
           </div>
           <p className="text-lg md:text-xl">{data?.overview}</p>
