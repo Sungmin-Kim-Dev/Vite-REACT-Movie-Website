@@ -54,3 +54,5 @@ export const languageList = [
     countryCode: "KR",
   },
 ];
+
+export const tabList = ["RECOMMENDATIONS", "COLLECTION", "REVIEW"]

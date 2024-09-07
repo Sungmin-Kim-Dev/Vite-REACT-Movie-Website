@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import background from "../assets/background.png";
 import logo from "../assets/logo.png";
-import { languageList, menuItems } from "@/pages/Constants/headerConst";
+import { languageList, menuItems } from "@/pages/Constants/globalConst";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { setCode } from "@/redux/slice/languageCodeSlice";

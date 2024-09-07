@@ -171,7 +171,7 @@ const CarouselPrevious = React.forwardRef(
         variant={variant}
         size={size}
         className={cn(
-          "global-width -global-left group/button absolute bottom-6 top-14 flex items-center justify-start bg-gradient-to-l from-transparent to-neutral-800 disabled:hidden",
+          "global-width -global-left group/button absolute bottom-6 top-14 flex items-center justify-start slide-left-btn disabled:hidden",
           orientation === "horizontal"
             ? ""
             : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -199,7 +199,7 @@ const CarouselNext = React.forwardRef(
         variant={variant}
         size={size}
         className={cn(
-          "global-width -global-right group/button absolute bottom-6 top-14 flex -translate-x-px items-center justify-end bg-gradient-to-r from-transparent to-neutral-900 disabled:hidden",
+          "global-width -global-right group/button absolute inset-y-0 flex -translate-x-px items-center justify-end slide-right-btn disabled:hidden",
           orientation === "horizontal"
             ? ""
             : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",

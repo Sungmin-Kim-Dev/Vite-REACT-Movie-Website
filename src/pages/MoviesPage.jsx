@@ -3,12 +3,11 @@ import MovieCard from "@/components/common/MovieCard";
 import PaginationComponent from "@/components/common/PaginationComponent";
 import SlideSkeleton from "@/components/common/SlideSkeleton";
 import { Button } from "@/components/ui/button";
-
 import { useGenreQuery } from "@/hooks/useGenreQuery";
 import { useMovieSearch } from "@/hooks/useMovieSearch";
-import { useLocalStorage } from "@uidotdev/usehooks";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 
 // Pagination
@@ -16,7 +15,7 @@ import { useSearchParams } from "react-router-dom";
 // as clicking pagination, change pages
 
 const MoviesPage = () => {
-  const [languageCode] = useLocalStorage("languageCode", "en-US");
+  const languageCode = useSelector((state) => state.code.code);
   const { data: movieGenreData } = useGenreQuery("movie", languageCode);
   // console.log(movieGenreData);
 
@@ -33,18 +32,18 @@ const MoviesPage = () => {
   // console.log(data);
   const filterDataByGenre = (id) => {
     if (!movieGenreData) return [];
-    console.log(id);
+    // console.log(id);
 
     const filteredData = data.results.filter((item) =>
       item.genre_ids.includes(id),
     );
-    console.log(filteredData);
+    // console.log(filteredData);
     setFilteredGenreName(movieGenreData.find((genre) => genre.id === id).name);
     setGenreFilteredData(filteredData);
   };
 
   const handlePageClick = ({ selected }) => {
-    console.log(selected + 1);
+    // console.log(selected + 1);
     setPage(selected + 1);
   };
   const { t } = useTranslation();
@@ -64,6 +63,7 @@ const MoviesPage = () => {
     return <ErrorCard error={error} />;
   }
   const displayedMovies = genreFilteredData ? genreFilteredData : data?.results;
+
   return (
     <div className="global-px pb-10">
       <h1 className="my-10 text-center text-4xl font-extrabold">
@@ -92,7 +92,7 @@ const MoviesPage = () => {
         <>
           <div className="my-8">
             <div className="grid grid-cols-2 gap-5 py-6 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 2xl:gap-8">
-              {displayedMovies.map((movie, index) => (
+              {displayedMovies?.map((movie, index) => (
                 <MovieCard key={index} movie={movie} />
               ))}
             </div>
@@ -100,7 +100,7 @@ const MoviesPage = () => {
           <PaginationComponent
             handlePageClick={handlePageClick}
             page={page}
-            total_pages={displayedMovies?.total_pages}
+            total_pages={data?.total_pages}
           />
         </>
       )}

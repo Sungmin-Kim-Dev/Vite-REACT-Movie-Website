@@ -10,11 +10,10 @@ import { useAPIQuery } from "@/hooks/useAPIQuery";
 import ErrorCard from "@/components/common/ErrorCard";
 import MovieCard from "./MovieCard";
 import SlideSkeleton from "./SlideSkeleton";
-import { useLocalStorage } from "@uidotdev/usehooks";
+import { useSelector } from "react-redux";
 
 const MovieSlide = ({ address, slideName }) => {
-  const [languageCode] = useLocalStorage("languageCode", "en-US");
-
+  const languageCode = useSelector((state) => state.code.code);
   const { data, isLoading, isError, error } = useAPIQuery(
     address,
     languageCode,

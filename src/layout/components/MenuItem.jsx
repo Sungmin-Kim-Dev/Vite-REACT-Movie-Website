@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const MenuItem = ({ itemName, itemLink, Icon, iconUnderline }) => {
   const { t } = useTranslation();
   return (
-    <li className="group/item first:hidden xs:first:block">
+    <li className="group/item first:hidden last:hidden xs:first:block">
       <Link
         to={itemLink}
         className="flex items-center gap-2 px-2 py-4 font-bold xs:px-3 xl:px-4 xl:py-4"

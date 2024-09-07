@@ -1,7 +1,6 @@
 import Banner from "./Components/Banner";
 import MovieSlide from "../components/common/MovieSlide";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 
 // 1. Banner - Top Popular movies
 // 2. Popular Movies
@@ -10,8 +9,6 @@ import { useSelector } from "react-redux";
 
 const Homepage = () => {
   const { t } = useTranslation();
-  const langCode = useSelector((state) => state.code.code);
-  console.log(langCode);
 
   return (
     <div>
