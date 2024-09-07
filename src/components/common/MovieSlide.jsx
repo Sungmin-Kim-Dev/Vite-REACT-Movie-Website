@@ -36,7 +36,9 @@ const MovieSlide = ({ address, slideName }) => {
         }}
         className="my-8"
       >
-        <h3 className="text-2xl font-bold">{slideName}</h3>
+        <h3 className="text-2xl font-bold md:text-3xl lg:text-4xl 2xl:text-5xl">
+          {slideName}
+        </h3>
         <CarouselContent className="-ml-5 2xl:-ml-8">
           {data?.results.map((movie, index) => (
             <CarouselItem

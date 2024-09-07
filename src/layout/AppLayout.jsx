@@ -50,7 +50,7 @@ const AppLayout = () => {
 
   return (
     <div
-      className="min-h-dvh select-none bg-black text-neutral-50"
+      className="flex min-h-dvh select-none flex-col bg-black text-neutral-50"
       style={{ background: `url(${background}) 50%/cover no-repeat fixed` }}
     >
       <header className="sticky top-0 z-10 bg-black">
@@ -123,6 +123,7 @@ const AppLayout = () => {
       <main className="pb-14">
         <Outlet />
       </main>
+      <div className="flex-grow"></div>
       <footer className="global-px bg-black pb-8">
         <Link to="/" className="mx-auto block w-[4.25rem] py-4 md:w-[5.375rem]">
           <img src={logo} alt="Logo" className="size-full" />

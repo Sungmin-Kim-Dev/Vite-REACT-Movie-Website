@@ -28,8 +28,7 @@ function App() {
   const language = languageCode.slice(0, 2);
   const country = languageCode.slice(3, 5);
   dispatch(setCode({ language, country }));
-
-  i18n.changeLanguage(languageCode);
+  i18n.changeLanguage(language);
 
   useEffect(() => {
     searchParams.set("language", languageCode);

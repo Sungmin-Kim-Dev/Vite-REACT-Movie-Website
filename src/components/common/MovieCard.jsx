@@ -36,9 +36,9 @@ const MovieCard = ({ movie }) => {
           className="size-full object-cover"
         />
       ) : (
-        <div className="h-full bg-zinc-600"></div>
+        <div className="peer/info h-full bg-zinc-600"></div>
       )}
-      <div className="movie-info absolute bottom-3 translate-y-full px-4 transition-all duration-300 group-hover/card:translate-y-0">
+      <div className="movie-info peer-empty/info:translate-y-0 absolute bottom-3 translate-y-full px-4 transition-all duration-300 group-hover/card:translate-y-0">
         <p className="my-3 text-2xl font-bold">{movie?.title}</p>
         <div className="badge-box md mb-2 flex flex-wrap gap-3">
           {showGenre(movie.genre_ids)?.map((id, index) => (
