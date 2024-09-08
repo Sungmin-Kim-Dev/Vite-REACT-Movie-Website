@@ -1,15 +1,19 @@
 /* eslint-disable react/prop-types */
-import ErrorCard from "@/components/common/ErrorCard";
-import ReviewCard from "@/components/common/ReviewCard";
+import ErrorCard from "@/pages/Components/ErrorCard";
+import ReviewCard from "@/pages/Components/ReviewCard";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useReviewQuery } from "@/hooks/useReviewQuery";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const Review = ({ id }) => {
-  const languageCode = useSelector((state) => state.code.code);
-  const { data, isLoading, isError, error } = useReviewQuery(id, languageCode);
-  console.log(data);
-  console.log(error);
+  // const languageCode = useSelector((state) => state.code.code);
+  const { data, isLoading, isError, error } = useReviewQuery(id, "en-US");
+  // if (languageCode.slice(0, 2) != "en") {
+  //   const { data: englishReview } = useReviewQuery(id, "en-US");
+  //   console.log(englishReview);
+  // }
+
+  // console.log(data);
 
   if (isLoading) {
     return <Skeleton className="size-full" />;

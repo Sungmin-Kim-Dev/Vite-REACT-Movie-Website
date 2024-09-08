@@ -1,7 +1,6 @@
 import { useMoviesQuery } from "@/hooks/useMoviesQuery";
-import ErrorCard from "@/components/common/ErrorCard";
+import ErrorCard from "@/pages/Components/ErrorCard";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useSelector } from "react-redux";
 
 const randomNumArray = (min, max, index) => {
   const answer = new Array();
@@ -15,11 +14,7 @@ const randomNumArray = (min, max, index) => {
 };
 
 const Banner = () => {
-  const languageCode = useSelector((state) => state.code.code);
-  const { data, isLoading, isError, error } = useMoviesQuery(
-    1022789,
-    languageCode,
-  );
+  const { data, isLoading, isError, error } = useMoviesQuery(1022789);
   // console.table("data:", data);
 
   console.log(randomNumArray(0, 19, 5));

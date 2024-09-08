@@ -7,17 +7,12 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { useAPIQuery } from "@/hooks/useAPIQuery";
-import ErrorCard from "@/components/common/ErrorCard";
+import ErrorCard from "@/pages/Components/ErrorCard";
 import MovieCard from "./MovieCard";
 import SlideSkeleton from "./SlideSkeleton";
-import { useSelector } from "react-redux";
 
 const MovieSlide = ({ address, slideName }) => {
-  const languageCode = useSelector((state) => state.code.code);
-  const { data, isLoading, isError, error } = useAPIQuery(
-    address,
-    languageCode,
-  );
+  const { data, isLoading, isError, error } = useAPIQuery(address);
 
   if (isLoading) {
     return <SlideSkeleton />;

@@ -1,5 +1,5 @@
 import Banner from "./Components/Banner";
-import MovieSlide from "../components/common/MovieSlide";
+import MovieSlide from "./Components/MovieSlide";
 import { useTranslation } from "react-i18next";
 
 // 1. Banner - Top Popular movies

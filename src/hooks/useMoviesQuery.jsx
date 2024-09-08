@@ -1,7 +1,9 @@
 import api from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
+import { useSelector } from "react-redux";
 
-export const useMoviesQuery = (category, languageCode) => {
+export const useMoviesQuery = (category) => {
+  const languageCode = useSelector((state) => state.code.code);
   const fetchMovies = (category, languageCode) => {
     return api.get(`movie/${category}`, {
       params: {

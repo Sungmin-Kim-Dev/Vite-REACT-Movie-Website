@@ -1,13 +1,12 @@
-import ErrorCard from "@/components/common/ErrorCard";
-import MovieCard from "@/components/common/MovieCard";
-import PaginationComponent from "@/components/common/PaginationComponent";
-import SlideSkeleton from "@/components/common/SlideSkeleton";
+import ErrorCard from "@/pages/Components/ErrorCard";
+import MovieCard from "@/pages/Components/MovieCard";
+import PaginationComponent from "@/pages/Components/PaginationComponent";
+import SlideSkeleton from "@/pages/Components/SlideSkeleton";
 import { Button } from "@/components/ui/button";
 import { useGenreQuery } from "@/hooks/useGenreQuery";
 import { useMovieSearch } from "@/hooks/useMovieSearch";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 
 // Pagination
@@ -15,18 +14,13 @@ import { useSearchParams } from "react-router-dom";
 // as clicking pagination, change pages
 
 const MoviesPage = () => {
-  const languageCode = useSelector((state) => state.code.code);
-  const { data: movieGenreData } = useGenreQuery("movie", languageCode);
+  const { data: movieGenreData } = useGenreQuery("movie");
   // console.log(movieGenreData);
 
   const [query] = useSearchParams();
   const keyword = query.get("q");
   const [page, setPage] = useState(1);
-  const { data, isLoading, isError, error } = useMovieSearch(
-    keyword,
-    page,
-    languageCode,
-  );
+  const { data, isLoading, isError, error } = useMovieSearch(keyword, page);
   const [genreFilteredData, setGenreFilteredData] = useState(data?.results);
   const [filteredGenreName, setFilteredGenreName] = useState("");
   // console.log(data);
@@ -50,7 +44,7 @@ const MoviesPage = () => {
 
   useEffect(() => {
     setPage(1);
-    setFilteredGenreName();
+    setFilteredGenreName("");
   }, [keyword, filteredGenreName]);
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });

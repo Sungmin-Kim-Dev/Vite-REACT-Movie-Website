@@ -55,4 +55,17 @@ export const languageList = [
   },
 ];
 
-export const tabList = ["RECOMMENDATIONS", "COLLECTION", "REVIEW"]
+export const tabList = [
+  {
+    tabID: "RECOMMENDATIONS",
+    name: "RECOMMENDATIONS",
+  },
+  {
+    tabID: "COLLECTION",
+    name: "COLLECTION",
+  },
+  {
+    tabID: "REVIEW",
+    name: "REVIEW",
+  },
+];

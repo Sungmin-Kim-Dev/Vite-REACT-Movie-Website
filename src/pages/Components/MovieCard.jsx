@@ -3,12 +3,10 @@ import { Badge } from "@/components/ui/badge";
 import { useGenreQuery } from "@/hooks/useGenreQuery";
 import { FaStar } from "react-icons/fa";
 import { FaThumbsUp } from "react-icons/fa";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
-  const languageCode = useSelector((state) => state.code.code);
-  const { data: movieGenreData } = useGenreQuery("movie", languageCode);
+  const { data: movieGenreData } = useGenreQuery("movie");
   const showGenre = (genreIdList) => {
     if (!movieGenreData) return [];
     const genreNameList = genreIdList.map((id) => {

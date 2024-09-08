@@ -1,10 +1,10 @@
-import ErrorCard from "@/components/common/ErrorCard";
-import SlideSkeleton from "@/components/common/SlideSkeleton";
+import ErrorCard from "@/pages/Components/ErrorCard";
+import SlideSkeleton from "@/pages/Components/SlideSkeleton";
 import { useMoviesQuery } from "@/hooks/useMoviesQuery";
 import { FaPlay } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import MovieSlide from "@/components/common/MovieSlide";
+import MovieSlide from "@/pages/Components/MovieSlide";
 import { tabList } from "./Constants/globalConst";
 import { useState } from "react";
 import Review from "./Components/Review";
@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/popover";
 import YouTube from "react-youtube";
 import { useAPIQuery } from "@/hooks/useAPIQuery";
+import { useTranslation } from "react-i18next";
 
 const MovieDetailPage = () => {
   const languageCode = useSelector((state) => state.code.code);
@@ -30,6 +31,9 @@ const MovieDetailPage = () => {
   const selectTab = (tabName) => {
     setSelectedTab(tabName);
   };
+  const date = new Date(data?.release_date).toLocaleDateString(languageCode);
+  const { t } = useTranslation();
+
   if (isLoading) {
     return <SlideSkeleton />;
   }
@@ -45,8 +49,11 @@ const MovieDetailPage = () => {
           </h1>
           <h3 className="mt-2 text-lg">{data.tagline}</h3>
           <div className="mt-5 flex gap-x-5">
-            <span>{data?.release_date}</span>
-            <span>{data?.runtime}m</span>
+            <span>{date}</span>
+            <span>
+              {data?.runtime}
+              {t("minutes")}
+            </span>
           </div>
           <div className="mt-6 flex flex-wrap gap-3">
             {data?.genres?.map(({ name }, index) => (
@@ -62,8 +69,8 @@ const MovieDetailPage = () => {
             {trailerInfo?.results[0] ? (
               <Popover>
                 <PopoverTrigger>
-                  <div className="flex gap-x-3 rounded-lg bg-slate-600 px-4 py-3 hover:bg-slate-400">
-                    <FaPlay /> TRAILER
+                  <div className="flex items-center gap-x-3 rounded-lg bg-slate-600 px-4 py-3 hover:bg-slate-400">
+                    <FaPlay /> {t("Trailer")}
                   </div>
                   <PopoverContent className="global-mx w-auto bg-slate-300">
                     <YouTube videoId={trailerInfo?.results[0].key} />
@@ -86,13 +93,13 @@ const MovieDetailPage = () => {
       </div>
       <div className="movie-detail-bottom-box">
         <div className="detail-tab-button flex flex-wrap border-b text-lg md:text-2xl">
-          {tabList.map((item) => (
+          {tabList.map(({ tabID, name }) => (
             <button
-              key={item}
-              className={`px-6 py-3 ${selectedTab === item ? "" : "text-zinc-400"} ${!collectionData && item === "COLLECTION" ? "hidden" : ""} last:hidden`}
-              onClick={() => selectTab(item)}
+              key={name}
+              className={`px-6 py-3 ${selectedTab === name ? "" : "text-zinc-400"} ${!collectionData && name === "COLLECTION" ? "hidden" : ""}`}
+              onClick={() => selectTab(tabID)}
             >
-              {item}
+              {t(name)}
             </button>
           ))}
         </div>

@@ -1,5 +1,6 @@
 import api from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
+import { useSelector } from "react-redux";
 
 const fetchMovieSearch = (keyword, page, languageCode) => {
   // api.get(`search/movie?search/keyword/query=${keyword}`, {
@@ -13,14 +14,11 @@ const fetchMovieSearch = (keyword, page, languageCode) => {
           language: languageCode,
         },
       })
-    : api.get(
-        `discover/movie?page=${page}&include_adult=true`,
-        {
-          params: {
-            language: languageCode,
-          },
+    : api.get(`discover/movie?page=${page}&include_adult=true`, {
+        params: {
+          language: languageCode,
         },
-      );
+      });
 };
 // const getKeywordList =
 
@@ -28,7 +26,8 @@ const fetchMovieSearch = (keyword, page, languageCode) => {
 
 // const url = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc';
 
-export const useMovieSearch = (keyword, page, languageCode) => {
+export const useMovieSearch = (keyword, page) => {
+  const languageCode = useSelector((state) => state.code.code);
   return useQuery({
     queryKey: ["movie-search", keyword, page, languageCode],
     queryFn: () => fetchMovieSearch(keyword, page, languageCode),

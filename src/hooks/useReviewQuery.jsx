@@ -9,8 +9,9 @@ export const useReviewQuery = (id, languageCode) => {
       },
     });
   };
+
   return useQuery({
-    queryKey: ["movie-review", id],
+    queryKey: ["movie-review", id, languageCode],
     queryFn: () => fetchReviews(id, languageCode),
     select: (result) => result.data,
   });
