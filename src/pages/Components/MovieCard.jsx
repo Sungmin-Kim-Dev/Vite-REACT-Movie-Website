@@ -24,7 +24,7 @@ const MovieCard = ({ movie }) => {
 
   return (
     <div
-      className="group/card relative cursor-pointer overflow-hidden rounded-xl outline outline-2 outline-offset-4 outline-white/0 transition-all duration-300 before:absolute before:inset-0 before:block before:bg-slate-800 before:opacity-0 before:duration-300 hover:scale-105 hover:outline-white hover:before:opacity-50"
+      className="group/card relative cursor-pointer overflow-hidden rounded-xl outline outline-2 outline-offset-4 aspect-[2/3] outline-white/0 transition-all duration-300 before:absolute before:inset-0 before:block before:bg-slate-800 before:opacity-0 before:duration-300 hover:scale-105 hover:outline-white hover:before:opacity-50"
       onClick={navigateToDetailPage}
     >
       {movie.poster_path ? (
