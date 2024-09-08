@@ -42,7 +42,7 @@ const MovieDetailPage = () => {
   }
   return (
     <div className="global-px pb-10">
-      <div className="my-10 flex max-w-screen-2xl flex-col-reverse gap-14 gap-y-6 md:flex-row">
+      <div className="my-10 flex mx-auto max-w-screen-2xl flex-col-reverse gap-14 gap-y-6 md:flex-row">
         <div className="movie-detail-text flex-1">
           <h1 className="text-4xl font-bold md:text-5xl xl:text-6xl">
             {data?.title}
