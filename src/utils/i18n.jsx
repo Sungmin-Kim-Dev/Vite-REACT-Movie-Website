@@ -30,6 +30,7 @@ const resources = {
       Fold: "Fold",
       minutes: "m",
       Trailer: "Trailer",
+      NoReviews: "No Reviews"
     },
   },
   ko: {
@@ -57,6 +58,7 @@ const resources = {
       Fold: "접기",
       minutes: "분",
       Trailer: "예고편",
+      NoReviews: "리뷰 없음"
     },
   },
 };
