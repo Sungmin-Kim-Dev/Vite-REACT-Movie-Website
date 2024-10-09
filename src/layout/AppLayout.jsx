@@ -71,7 +71,6 @@ const AppLayout = () => {
                   itemName={itemName}
                   itemLink={itemLink}
                   Icon={Icon}
-                  iconUnderline={true}
                 />
               ))}
             </ul>

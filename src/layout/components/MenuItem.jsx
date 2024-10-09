@@ -1,24 +1,22 @@
 /* eslint-disable react/prop-types */
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-const MenuItem = ({ itemName, itemLink, Icon, iconUnderline }) => {
+const MenuItem = ({ itemName, itemLink, Icon }) => {
   const { t } = useTranslation();
   return (
-    <li className="group/item first:hidden last:hidden xs:first:block">
-      <Link
+    <li className="group/item first:hidden xs:first:block">
+      <NavLink
         to={itemLink}
-        className="flex items-center gap-2 px-2 py-4 font-bold xs:px-3 xl:px-4 xl:py-4"
+        className="menu-link flex items-center gap-2 px-2 py-4 font-bold xs:px-3 xl:px-4 xl:py-4"
       >
-        <div
-          className={`${iconUnderline ? "before:hover-underline" : ""} relative before:-bottom-2 xl:before:hidden`}
-        >
+        <div className="before:hover-underline menu-icon relative before:-bottom-2 xl:before:hidden">
           <Icon className="size-6 xl:size-5" />
         </div>
-        <span className="before:hover-underline relative hidden py-3 leading-4 xl:inline-block">
+        <span className="before:hover-underline menu-text relative hidden py-3 leading-4 xl:inline-block">
           {t(`${itemName}`)}
         </span>
-      </Link>
+      </NavLink>
     </li>
   );
 };

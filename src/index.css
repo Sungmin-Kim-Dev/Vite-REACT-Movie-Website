@@ -5,9 +5,9 @@
 @tailwind utilities;
 @layer base {
   html {
-    font-family: "SUIT Variable", "Noto Sans KR",
-      ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: "SUIT Variable", "Noto Sans KR", ui-sans-serif, system-ui,
+      sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      "Noto Color Emoji";
     @apply h-full;
   }
   :root {
@@ -81,6 +81,12 @@
   .hover-underline {
     @apply absolute inset-x-0 bottom-1 block h-[2px] origin-left scale-x-0 bg-neutral-50 opacity-40 transition-all duration-300 group-hover/item:scale-x-100 group-hover/item:opacity-100;
   }
+  .menu-link.active {
+    .menu-icon::before,
+    .menu-text::before {
+      @apply scale-x-100 opacity-100;
+    }
+  }
   .after-gradient {
     background: linear-gradient(
       to top,
@@ -122,6 +128,7 @@
   .-global-right {
     @apply -right-6 xs:-right-10 md:-right-14 lg:-right-16 xl:-right-[4.375rem];
   }
+
   .slide-left-btn {
     background-color: hsla(0, 0%, 100%, 0);
     background-image: radial-gradient(
